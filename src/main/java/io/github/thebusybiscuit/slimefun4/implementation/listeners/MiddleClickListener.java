@@ -96,7 +96,7 @@ public class MiddleClickListener implements Listener {
          * and then the boolean above wont match because WALL_HEAD != PLAYER_HEAD.
          * This check makes up for that lack.
          */
-        boolean isPlayerWallhead = b.getType() == Material.PLAYER_WALL_HEAD && e.getCursor().getType() == Material.PLAYER_HEAD;
+        boolean isPlayerWallhead = b.getType() == Material.PLAYER_WALL_HEAD && e.getCursor().getType() == Material.PLAYER_HEAD && e.getCurrentItem().getType() == Material.AIR;
 
         return isOutsideInventoryClick || isPlayerWallhead;
     }
