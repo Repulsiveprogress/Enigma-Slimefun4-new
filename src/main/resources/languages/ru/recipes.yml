@@ -6,23 +6,28 @@ slimefun:
       - 'Строится в мире из блоков,'
       - 'не крафтится.'
   enhanced_crafting_table:
+    name: 'Улучшенный верстак'
     lore:
       - 'Создаётся в Enhanced Crafting Table'
       - 'так, как показано.'
       - 'Обычный верстак не удержит такую силу!'
   armor_forge:
+    name: 'Кузница доспехов'
     lore:
       - 'Создаётся так, как показано,'
       - 'используя Armor Forge'
   grind_stone:
+    name: 'Точильный камень'
     lore:
       - 'Создаётся так, как показано,'
       - 'используя Grind Stone'
   smeltery:
+    name: 'Плавильня'
     lore:
       - 'Создаётся так, как показано,'
       - 'используя Smeltery'
   ore_crusher:
+    name: 'Дробилка руд'
     lore:
       - 'Создаётся так, как показано,'
       - 'используя Ore Crusher'
@@ -32,68 +37,84 @@ slimefun:
       - 'Убейте указанного моба'
       - 'для заполучения предмета'
   gold_pan:
+    name: 'Рудопромывочный лоток'
     lore:
       - 'Используйте Gold Pan'
       - 'для получения предмета'
   compressor:
+    name: 'Компрессор'
     lore:
       - 'Создаётся так, как показано,'
       - 'используя Compressor'
   pressure_chamber:
+    name: 'Барокамера'
     lore:
       - 'Создаётся так, как показано,'
       - 'используя Pressure Chamber'
   ore_washer:
+    name: 'Очиститель руд'
     lore:
       - 'Создаётся так, как показано,'
       - 'используя Ore Washer'
   juicer:
+    name: 'Соковыжималка'
     lore:
       - 'Создаётся так, как показано,'
       - 'используя Juicer'
   magic_workbench:
+    name: 'Магический верстак'
     lore:
       - 'Создаётся так, как показано,'
       - 'используя Magic Workbench'
   ancient_altar:
+    name: 'Древний алтарь'
     lore:
       - 'Создаётся так, как показано,'
       - 'используя Ancient Altar.'
       - 'Взгляните на Ancient Altar для большей информации'
   heated_pressure_chamber:
+    name: 'Обогреваемая барокамера'
     lore:
       - 'Создаётся так, как показано,'
       - 'используя Heated Pressure Chamber'
   food_fabricator:
+    name: 'Пищевая фабрика'
     lore:
       - 'Создаётся так, как показано,'
       - 'используя Food Fabricator'
   food_composter:
+    name: 'Пищевой компостер'
     lore:
       - 'Создаётся так, как показано,'
       - 'используя Food Composter'
   freezer:
+    name: 'Морозилка'
     lore:
       - 'Создаётся так, как показано,'
       - 'при помощи Freezer'
   geo_miner:
+    name: 'ГЕО-Копатель'
     lore:
       - 'Добывается при помощи'
       - 'GEO Miner'
   nuclear_reactor:
+    name: 'Атомный реактор'
     lore:
       - 'Является  побочным продуктом'
       - 'от использования Nuclear Reactor'
   oil_pump:
+    name: 'Нефтяной насос'
     lore:
       - 'Добывается при помощи'
       - 'Oil Pump'
   pickaxe_of_containment:
+    name: 'Кирка сдерживания'
     lore:
       - 'Этот блок добывается'
       - 'при помощи'
       - 'Pickaxe of Containment'
   refinery:
+    name: 'Нефтеперерабатывающий завод'
     lore:
       - 'Создаётся так, как показано,'
       - 'используя Refinery'
