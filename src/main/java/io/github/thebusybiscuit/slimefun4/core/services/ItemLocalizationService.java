@@ -66,6 +66,7 @@ public class ItemLocalizationService {
             }
 
             stack.setItemMeta(meta);
+            item.refreshItemTemplate();
             patched++;
         }
 

@@ -72,9 +72,9 @@ public class SlimefunItem implements Placeable {
 
     /**
      * This is the original {@link ItemStack} that represents this item.
-     * It is immutable and should always be cloned, never used directly.
+     * Should always be cloned, never used directly.
      */
-    private final ItemStack itemStackTemplate;
+    private ItemStack itemStackTemplate;
 
     /**
      * Reference to the {@link SlimefunItemStack} this item was created from.
@@ -165,6 +165,17 @@ public class SlimefunItem implements Placeable {
         this.recipeType = recipeType;
         this.recipe = recipe;
         this.recipeOutput = recipeOutput;
+    }
+
+    /**
+     * Updates the internal item template from the current state of the
+     * associated {@link SlimefunItemStack}. Called by localization after
+     * name/lore have been patched on the stack.
+     */
+    public void refreshItemTemplate() {
+        if (slimefunItemStack != null) {
+            this.itemStackTemplate = slimefunItemStack.item();
+        }
     }
 
     /**
