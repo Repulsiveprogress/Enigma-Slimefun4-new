@@ -1,67 +1,61 @@
-# Slimefun 4 — форк EnigmaticMP
+# Slimefun 4 — Fork for Paper 26.1.2
 
-Это **неофициальный форк Slimefun 4**, портированный на новую версию игры в рамках проекта **EnigmaticMP**.
+This is an **unofficial fork of Slimefun 4**, ported to Paper 26.1.2 / Java 25.
 
-> Форк не является официальным релизом Slimefun, не поддерживается командой Slimefun и **не принимает баг-репортов в апстриме**. Все вопросы и проблемы — только в этом репозитории.
+> This fork is not an official Slimefun release, is not supported by the Slimefun team, and **does not accept bug reports upstream**. All issues should be reported in this repository only.
 
-## Что это
+## What is this
 
-Slimefun — это плагин, который превращает ванильный сервер Minecraft в подобие модпака без установки модов. Более **500 новых предметов и рецептов**: от рюкзаков и джетпаков до ядерных реакторов, магических алтарей, систем электроснабжения и транспортных линий для предметов.
+Slimefun is a plugin that turns a vanilla Minecraft server into a modpack-like experience without installing any mods. Over **500 new items and recipes**: from backpacks and jetpacks to nuclear reactors, magic altars, power grids and item transport systems.
 
-Проект существует с **2013 года**. Этот форк создан для того, чтобы плагин продолжал работать на актуальной версии Minecraft, пока апстрим не выпустил поддержку.
+This fork exists to make the plugin work on the current version of Minecraft.
 
-## Целевая версия
+## Target version
 
-| | Этот форк (EnigmaticMP) | Оригинальный Slimefun |
+| | This fork | Original Slimefun |
 | --- | --- | --- |
 | **Minecraft** | 26.1.2 | 1.16 – 1.21 |
-| **Сервер** | Paper 26.1.2 | Paper / Spigot |
-| **Java** | **Java 25** (требование Paper 26.1) | Java 17+ |
-| **Поддержка** | Сообщество EnigmaticMP | Команда Slimefun |
+| **Server** | Paper 26.1.2 | Paper / Spigot |
+| **Java** | **Java 25** | Java 16+ |
 
-> Minecraft 26.1 — первая версия с новой схемой версионирования Mojang (`YY.D.H`) и первая, требующая **Java 25**. Запуск на Java 21 или ниже невозможен.
+> Minecraft 26.1 is the first version using Mojang's new `YY.D.H` versioning scheme and the first to require **Java 25**. Running on Java 21 or lower is not possible.
 
-## Установка
+## Installation
 
-1. Установите Paper 26.1.2 и убедитесь, что сервер запускается на Java 25.
-2. Скачайте `.jar` этого форка из [Releases](../../releases) (либо соберите вручную, см. ниже).
-3. Положите `.jar` в папку `plugins/` сервера.
-4. Запустите сервер. Конфиги создадутся в `plugins/Slimefun/`.
+1. Install Paper 26.1.2 and make sure the server runs on Java 25.
+2. Download the `.jar` from [Releases](../../releases) or build it manually (see below).
+3. Place the `.jar` in the server's `plugins/` folder.
+4. Start the server. Config files will be created in `plugins/Slimefun/`.
 
-## Сборка из исходников
+## Building from source
 
-Требования:
+Requirements:
 - JDK 25
 - Maven 3.9+
 
 ```bash
-git clone <url-этого-форка>
+git clone <this-repo-url>
 cd Enigma-Slimefun4-new
 mvn clean package
 ```
 
-Готовый `.jar` появится в `target/Slimefun v4.9-UNOFFICIAL.jar`.
+The built `.jar` will be at `target/Slimefun v4.9-UNOFFICIAL.jar`.
 
-## Отличия от апстрима
+## Differences from upstream
 
-- Совместимость с Paper 26.1.2 (Mojang mappings, новый формат `api-version`).
-- Java 25 в качестве target (вместо Java 16/17).
-- Обновлённые версии зависимостей под новую API.
-- Возможные правки кода под breaking changes Paper API между 1.21 и 26.1.
+- Compatibility with Paper 26.1.2 (Mojang mappings, new `api-version` format).
+- Java 25 as compilation target (was Java 16/17).
+- Updated dependencies for the new API.
+- Code fixes for breaking changes in Paper API between 1.21 and 26.1.
 
-Изменений в игровой логике, рецептах и балансе **нет** — это чисто технический порт.
+No changes to gameplay, recipes or balance — this is a purely technical port.
 
-## Лицензия
+## License
 
-Slimefun 4 распространяется под [GNU GPLv3](LICENSE). Этот форк наследует ту же лицензию.
+Slimefun 4 is licensed under [GNU GPLv3](LICENSE). This fork inherits the same license.
 
-Оригинальный проект: <https://github.com/Slimefun/Slimefun4>
-
-## Благодарности
-
-- Команде Slimefun и более чем 200 контрибьюторам оригинального проекта за 12 лет работы над плагином.
-- Сообществу EnigmaticMP — за необходимость, которая родила этот форк.
+Original project: <https://github.com/Slimefun/Slimefun4>
 
 ---
 
-*Slimefun не аффилирован с Mojang Studios или Minecraft.*
+*Slimefun is not affiliated with Mojang Studios or Minecraft.*
