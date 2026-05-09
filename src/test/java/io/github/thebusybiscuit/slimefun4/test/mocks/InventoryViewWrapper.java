@@ -6,6 +6,7 @@ import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryView;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.MenuType;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -55,5 +56,36 @@ public class InventoryViewWrapper extends InventoryViewMock {
         if (inventory != null) {
             inventory.setItem(convertSlot(slot), item);
         }
+    }
+
+    @Override
+    @Nonnull
+    public MenuType getMenuType() {
+        return switch (getType()) {
+            case ANVIL -> MenuType.ANVIL;
+            case BEACON -> MenuType.BEACON;
+            case BLAST_FURNACE -> MenuType.BLAST_FURNACE;
+            case BREWING -> MenuType.BREWING_STAND;
+            case CARTOGRAPHY -> MenuType.CARTOGRAPHY_TABLE;
+            case CRAFTING -> MenuType.CRAFTING;
+            case ENCHANTING -> MenuType.ENCHANTMENT;
+            case FURNACE -> MenuType.FURNACE;
+            case GRINDSTONE -> MenuType.GRINDSTONE;
+            case HOPPER -> MenuType.HOPPER;
+            case LECTERN -> MenuType.LECTERN;
+            case LOOM -> MenuType.LOOM;
+            case MERCHANT -> MenuType.MERCHANT;
+            case SHULKER_BOX -> MenuType.SHULKER_BOX;
+            case SMITHING -> MenuType.SMITHING;
+            case SMOKER -> MenuType.SMOKER;
+            case STONECUTTER -> MenuType.STONECUTTER;
+            case DISPENSER, DROPPER -> MenuType.GENERIC_3X3;
+            case CHEST -> MenuType.GENERIC_9X3;
+            default -> MenuType.GENERIC_9X3;
+        };
+    }
+
+    @Override
+    public void open() {
     }
 }
