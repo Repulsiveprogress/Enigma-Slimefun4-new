@@ -77,6 +77,13 @@ public class SlimefunItem implements Placeable {
     private final ItemStack itemStackTemplate;
 
     /**
+     * Reference to the {@link SlimefunItemStack} this item was created from.
+     * May be null for items created from a plain {@link ItemStack}.
+     */
+    @Nullable
+    private SlimefunItemStack slimefunItemStack;
+
+    /**
      * This is a reference to the {@link SlimefunAddon} that registered this
      * {@link SlimefunItem}, if the item has not been registered yet, it will be null.
      */
@@ -154,6 +161,7 @@ public class SlimefunItem implements Placeable {
         this.itemGroup = itemGroup;
         this.itemStackTemplate = item.item();
         this.id = item.getItemId();
+        this.slimefunItemStack = item;
         this.recipeType = recipeType;
         this.recipe = recipe;
         this.recipeOutput = recipeOutput;
@@ -219,6 +227,17 @@ public class SlimefunItem implements Placeable {
      */
     public @Nonnull ItemStack getItem() {
         return itemStackTemplate.clone();
+    }
+
+    /**
+     * Returns the {@link SlimefunItemStack} this item was created from, or null
+     * if it was created from a plain {@link ItemStack}.
+     *
+     * @return The {@link SlimefunItemStack}, or null
+     */
+    @Nullable
+    public SlimefunItemStack getSlimefunItemStack() {
+        return slimefunItemStack;
     }
 
     /**

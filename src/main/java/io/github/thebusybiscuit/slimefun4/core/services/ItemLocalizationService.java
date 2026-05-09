@@ -14,7 +14,7 @@ import io.github.thebusybiscuit.slimefun4.core.services.localization.Language;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 
 /**
- * Applies name/lore translations from items.yml to every registered {@link SlimefunItemStack}.
+ * Applies name/lore translations from items.yml to every registered {@link SlimefunItem}.
  * Called once after items and languages are loaded.
  */
 public class ItemLocalizationService {
@@ -26,7 +26,7 @@ public class ItemLocalizationService {
     }
 
     /**
-     * Patches all registered {@link SlimefunItem} stacks with localized name/lore
+     * Patches all registered SlimefunItem stacks with localized name/lore
      * from the server's default language items.yml, falling back to English.
      */
     public void applyLocalizations() {
@@ -39,7 +39,12 @@ public class ItemLocalizationService {
         int patched = 0;
 
         for (SlimefunItem item : Slimefun.getRegistry().getAllSlimefunItems()) {
-            SlimefunItemStack stack = item.getItem();
+            SlimefunItemStack stack = item.getSlimefunItemStack();
+
+            if (stack == null) {
+                continue;
+            }
+
             String id = stack.getItemId();
 
             String name = Slimefun.getLocalization().getItemName(language, id);
