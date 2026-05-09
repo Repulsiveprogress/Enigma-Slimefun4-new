@@ -527,6 +527,22 @@ public class Slimefun extends JavaPlugin implements SlimefunAddon {
             int version = PaperLib.getMinecraftVersion();
             int patchVersion = PaperLib.getMinecraftPatchVersion();
 
+            // PaperLib returns 0 for new YY.D.P versioning (26.1.2+) since it expects 1.X format.
+            // Parse it ourselves from Bukkit.getVersion() which contains "MC: 26.1.2"
+            if (version <= 0) {
+                String rawVersion = Bukkit.getVersion();
+                java.util.regex.Matcher m = java.util.regex.Pattern.compile("MC:\\s*(\\d+)\\.(\\d+)(?:\\.(\\d+))?").matcher(rawVersion);
+                if (m.find()) {
+                    int year = Integer.parseInt(m.group(1));
+                    int drop = Integer.parseInt(m.group(2));
+                    // For new versioning: treat year as major, drop as minor
+                    if (year >= 26) {
+                        version = year;
+                        patchVersion = drop;
+                    }
+                }
+            }
+
             if (version > 0) {
                 // Check all supported versions of Minecraft
                 for (MinecraftVersion supportedVersion : MinecraftVersion.values()) {
