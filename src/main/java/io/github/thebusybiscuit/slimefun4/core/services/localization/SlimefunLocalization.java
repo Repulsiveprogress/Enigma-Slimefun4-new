@@ -307,6 +307,20 @@ public abstract class SlimefunLocalization implements Keyed {
         return getStringOrNull(getLanguage(p), LanguageFile.RESOURCES, key);
     }
 
+    public @Nullable String getItemName(@Nonnull Language language, @Nonnull String itemId) {
+        Validate.notNull(language, "Language must not be null!");
+        Validate.notNull(itemId, "Item ID must not be null!");
+
+        return getStringOrNull(language, LanguageFile.ITEMS, itemId + ".name");
+    }
+
+    public @Nullable List<String> getItemLore(@Nonnull Language language, @Nonnull String itemId) {
+        Validate.notNull(language, "Language must not be null!");
+        Validate.notNull(itemId, "Item ID must not be null!");
+
+        return getStringListOrNull(language, LanguageFile.ITEMS, itemId + ".lore");
+    }
+
     public @Nonnull ItemStack getRecipeTypeItem(@Nonnull Player p, @Nonnull RecipeType recipeType) {
         Validate.notNull(p, "Player cannot be null!");
         Validate.notNull(recipeType, "Recipe type cannot be null!");

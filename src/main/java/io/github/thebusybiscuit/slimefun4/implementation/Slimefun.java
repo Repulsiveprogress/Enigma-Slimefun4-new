@@ -48,6 +48,7 @@ import io.github.thebusybiscuit.slimefun4.core.services.BackupService;
 import io.github.thebusybiscuit.slimefun4.core.services.BlockDataService;
 import io.github.thebusybiscuit.slimefun4.core.services.CustomItemDataService;
 import io.github.thebusybiscuit.slimefun4.core.services.CustomTextureService;
+import io.github.thebusybiscuit.slimefun4.core.services.ItemLocalizationService;
 import io.github.thebusybiscuit.slimefun4.core.services.LocalizationService;
 import io.github.thebusybiscuit.slimefun4.core.services.MetricsService;
 import io.github.thebusybiscuit.slimefun4.core.services.MinecraftRecipeService;
@@ -334,6 +335,9 @@ public class Slimefun extends JavaPlugin implements SlimefunAddon {
 
         logger.log(Level.INFO, "Loading items...");
         loadItems();
+
+        logger.log(Level.INFO, "Applying item localizations...");
+        new ItemLocalizationService(this).applyLocalizations();
 
         logger.log(Level.INFO, "Loading researches...");
         loadResearches();
