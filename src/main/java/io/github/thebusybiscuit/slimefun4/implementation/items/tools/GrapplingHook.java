@@ -75,6 +75,7 @@ public class GrapplingHook extends SimpleSlimefunItem<ItemUseHandler> {
                 Arrow arrow = p.getWorld().spawn(p.getEyeLocation().add(direction.getX(), direction.getY(), direction.getZ()), Arrow.class);
                 arrow.setShooter(p);
                 arrow.setVelocity(direction);
+                arrow.setPickupStatus(Arrow.PickupStatus.DISALLOWED);
 
                 Bat bat = (Bat) p.getWorld().spawnEntity(p.getLocation(), EntityType.BAT);
                 bat.setInvulnerable(true);

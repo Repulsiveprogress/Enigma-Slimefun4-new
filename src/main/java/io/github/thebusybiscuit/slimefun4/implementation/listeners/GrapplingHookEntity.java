@@ -1,5 +1,7 @@
 package io.github.thebusybiscuit.slimefun4.implementation.listeners;
 
+import java.util.UUID;
+
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 
@@ -24,6 +26,11 @@ final class GrapplingHookEntity {
         return arrow;
     }
 
+    @Nonnull
+    public UUID getLeashTargetUuid() {
+        return leashTarget.getUniqueId();
+    }
+
     public void drop(@Nonnull Location l) {
         // Nothing dropped — prevents lead/item duplication exploits
     }
@@ -34,10 +41,6 @@ final class GrapplingHookEntity {
         }
 
         if (leashTarget.isValid()) {
-            // Remove leash before killing the entity to prevent lead drop
-            if (leashTarget instanceof org.bukkit.entity.LivingEntity living && living.isLeashed()) {
-                living.setLeashHolder(null);
-            }
             leashTarget.remove();
         }
     }

@@ -20,6 +20,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.entity.EntityPortalEnterEvent;
+import org.bukkit.event.entity.EntityUnleashEvent;
 import org.bukkit.event.entity.PlayerLeashEntityEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.hanging.HangingBreakByEntityEvent;
@@ -48,6 +49,7 @@ public class GrapplingHookListener implements Listener {
 
     private final Map<UUID, GrapplingHookEntity> activeHooks = new HashMap<>();
     private final Set<UUID> invulnerability = new HashSet<>();
+    private final Set<UUID> hookBats = new HashSet<>();
 
     public void register(@Nonnull Slimefun plugin, @Nonnull GrapplingHook grapplingHook) {
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
@@ -97,9 +99,7 @@ public class GrapplingHookListener implements Listener {
             return;
         }
 
-        UUID uuid = e.getPlayer().getUniqueId();
-        activeHooks.remove(uuid);
-        invulnerability.remove(uuid);
+        cleanupPlayer(e.getPlayer().getUniqueId());
     }
 
     @EventHandler
@@ -108,9 +108,15 @@ public class GrapplingHookListener implements Listener {
             return;
         }
 
-        UUID uuid = e.getPlayer().getUniqueId();
-        activeHooks.remove(uuid);
+        cleanupPlayer(e.getPlayer().getUniqueId());
+    }
+
+    private void cleanupPlayer(@Nonnull UUID uuid) {
+        GrapplingHookEntity hook = activeHooks.remove(uuid);
         invulnerability.remove(uuid);
+        if (hook != null) {
+            hookBats.remove(hook.getLeashTargetUuid());
+        }
     }
 
     @EventHandler
@@ -132,6 +138,13 @@ public class GrapplingHookListener implements Listener {
 
         if (e.getEntity() instanceof Arrow arrow) {
             handleGrapplingHook(arrow);
+        }
+    }
+
+    @EventHandler
+    public void onUnleash(EntityUnleashEvent e) {
+        if (hookBats.contains(e.getEntity().getUniqueId())) {
+            e.setDropLeash(false);
         }
     }
 
@@ -186,8 +199,12 @@ public class GrapplingHookListener implements Listener {
 
                 player.setVelocity(velocity);
 
+                UUID batUuid = hook.getLeashTargetUuid();
                 hook.remove();
-                Slimefun.runSync(() -> activeHooks.remove(player.getUniqueId()), 20L);
+                Slimefun.runSync(() -> {
+                    activeHooks.remove(player.getUniqueId());
+                    hookBats.remove(batUuid);
+                }, 20L);
             }
         }
     }
@@ -200,8 +217,10 @@ public class GrapplingHookListener implements Listener {
     public void addGrapplingHook(Player p, Arrow arrow, Bat bat, boolean dropItem, long despawnTicks, boolean wasConsumed) {
         GrapplingHookEntity hook = new GrapplingHookEntity(p, arrow, bat, dropItem, wasConsumed);
         UUID uuid = p.getUniqueId();
+        UUID batUuid = bat.getUniqueId();
 
         activeHooks.put(uuid, hook);
+        hookBats.add(batUuid);
 
         // To fix issue #253
         Slimefun.runSync(() -> {
@@ -214,6 +233,7 @@ public class GrapplingHookListener implements Listener {
                 Slimefun.runSync(() -> {
                     activeHooks.remove(uuid);
                     invulnerability.remove(uuid);
+                    hookBats.remove(batUuid);
                 }, 20L);
             }
         }, despawnTicks);
