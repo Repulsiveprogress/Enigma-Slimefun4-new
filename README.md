@@ -50,9 +50,9 @@ The built `.jar` will be at `target/Slimefun v4.9-UNOFFICIAL.jar`.
 
 No changes to gameplay, recipes or balance — this is a purely technical port.
 
-## Отличие от оригинала
+## Changes from original
 
-- **Крюк-кошка** больше не выпадает на землю после использования — предмет автоматически возвращается в инвентарь игрока.
+- **Grappling Hook** no longer drops on the ground after use — the item is returned directly to the player's inventory.
 
 ## License
 
