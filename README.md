@@ -50,6 +50,10 @@ The built `.jar` will be at `target/Slimefun v4.9-UNOFFICIAL.jar`.
 
 No changes to gameplay, recipes or balance — this is a purely technical port.
 
+## Отличие от оригинала
+
+- **Крюк-кошка** больше не выпадает на землю после использования — предмет автоматически возвращается в инвентарь игрока.
+
 ## License
 
 Slimefun 4 is licensed under [GNU GPLv3](LICENSE). This fork inherits the same license.
